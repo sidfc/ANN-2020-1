@@ -1,4 +1,4 @@
-pontos = [(1, 2), (2, 5), (3, -1), (4, 2)]
+pontos = [(1, 2), (2, 5), (3, -1), (4, 2), (3.1, 3), (1.2, 8)]
 xs, ys = zip(*pontos)
 n = len(pontos)
 
@@ -35,7 +35,7 @@ def p(x):
     return soma
 
 def eq(coefs):
-    equation = "p(x)="
+    equation = ""
     for k in range(n):
         termo_k = "*".join([f'(x{sign(-xi)})' for i, xi in enumerate(xs) if i < k])
         if k == 0:
@@ -48,3 +48,15 @@ poly = eq(a)
 print(poly)
 
 # Método das diferenças divididas (de Newton)
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+def poly_f(x):
+    return eval(poly)
+
+a, b = min(xs) - 0.5, max(xs) + 0.5
+t = np.arange(a, b, 0.01)
+plt.scatter(xs, ys)
+plt.plot(t, poly_f(t), color="red", label="polinômio interpolador")
+plt.show()
