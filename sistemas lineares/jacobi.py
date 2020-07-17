@@ -16,9 +16,8 @@ chute = [0,0,0,1]
 for i in range(n):
     xn = []
     for j, row in enumerate(E):
-        coefs = [-el for k, el in enumerate(row[:-1]) if k != j]
-        vec = [c for k, c in enumerate(chute) if k != j]
-        subs = (row[-1] + sum([c * v for c, v in zip(coefs, vec)])) / row[j]
+        subs = sum([el * chute[k] for k, el in enumerate(row[:-1]) if k != j])
+        subs = (row[-1] - subs) / row[j]
         xn.append(subs)
     print(xn, test(E, xn))
     chute = xn

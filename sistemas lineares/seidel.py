@@ -10,16 +10,15 @@ def test(matrix, vec):
         err.append(prod)
     return err
 
-n  = 10
+n  = 20
 itr = {}
 chute = [0,0,0]
 for i in range(n):
     xn = []
     for j, row in enumerate(E):
-        coefs = [-el for k, el in enumerate(row[:-1]) if k != j]
-        chute = xn + chute[len(xn):]
-        vec = [c for k, c in enumerate(chute) if k != j]
-        subs = (row[-1] + sum([c * v for c, v in zip(coefs, vec)])) / row[j]
+        chute = xn + chute[len(xn):] # this line updates chute
+        subs = sum([el * chute[k] for k, el in enumerate(row[:-1]) if k != j])
+        subs = (row[-1] - subs) / row[j]
         xn.append(subs)
     print(i, xn, test(E, xn))
     chute = xn
