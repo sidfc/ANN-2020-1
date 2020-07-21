@@ -2,7 +2,7 @@
 # exact = 0.1010133843750915090423992176496406805367824755168469769659207805507525813029943914080627255774700178
 
 def integral_dupla(f, a, b, c, d, n1, n2):
-    if n1 < 2 and n2 < 2:
+    if n1 < 2 or n2 < 2:
         raise ValueError("Me recuso a fazer contas com esses valores!")
     # partição do intervalo [a,b]
     h1 = (b - a) / (n1 - 1)
@@ -29,7 +29,7 @@ def integral_dupla(f, a, b, c, d, n1, n2):
 def integral_dupla_s(f, a, b, c, d, n1, n2):
     if n1 % 2 != 1 or n2 % 2 != 1:
         raise ValueError('n1 e n2 têm que ser ímpares')
-    if n1 < 2 and n2 < 2:
+    if n1 < 2 or n2 < 2:
         raise ValueError("Me recuso a fazer contas com esses valores!")
     # partição do intervalo [a,b]
     h1 = (b - a) / (n1 - 1)
