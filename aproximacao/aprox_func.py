@@ -8,7 +8,8 @@ n = 100
 xs = [a + (b - a) * r.random() for _ in range(n)]
 xs.sort()
 def data(x):
-    val = 2 * x ** 3.2 + r.random() / 10
+    erro = r.random() / 1000
+    val = 2 * x ** 3.2 + erro
     return val
 ys = [data(x) for x in xs]
 
