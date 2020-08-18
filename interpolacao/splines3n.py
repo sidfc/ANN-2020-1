@@ -2,9 +2,10 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # pontos = [(1,2.1), (2,1.5), (3,3.2), (3.5, 2.9), (3.8, 2)]
-pontos = [(x, np.cos(x ** 2) + x ** 2) for x in np.arange(-2, 2, 0.2)]
+pontos = [(x, np.cos(x ** 2) + x ** 2) for x in np.arange(-2, 2, 0.1)]
+print(len(pontos))
 xs, ys = zip(*pontos)
-n = len(xs) - 1
+n = len(pontos) - 1
 h = {k: xs[k+1] - xs[k] for k in range(n)}
 a = {k: v for k, v in enumerate(ys)}
 
