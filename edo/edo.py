@@ -30,6 +30,35 @@ def heun(f, x0, y0, h):
         y[k + 1] = y[k] + (h / 2) * (m1 + m2) # <- fórmula do método de Heun
     return x, y
 
+def euler_mid(f, x0, y0, h):
+    x = {i: x0 + i * h for i in range(n)}
+    y = {0: y0}
+    for k in range(n - 1):
+        m1 = f(x[k], y[k])
+        m2 = f(x[k] + h, y[k] + m1 * h)
+        y[k + 1] = y[k] + h * m2 # <- fórmula do método de Euler do ponto médio
+    return x, y
+
+def ralston(f, x0, y0, h):
+    x = {i: x0 + i * h for i in range(n)}
+    y = {0: y0}
+    for k in range(n - 1):
+        m1 = f(x[k], y[k])
+        m2 = f(x[k] + h, y[k] + m1 * h)
+        y[k + 1] = y[k] + (h / 3) * (1 * m1 + 2 * m2) # <- fórmula do método de Heun
+    return x, y
+
+def ralston(f, x0, y0,c2, h):
+    # c1 + c2 = 1 --> c1 = 1 - c2, c2 > 0
+    c1 = 1 - c2
+    x = {i: x0 + i * h for i in range(n)}
+    y = {0: y0}
+    for k in range(n - 1):
+        m1 = f(x[k], y[k])
+        m2 = f(x[k] + h, y[k] + m1 * h)
+        y[k + 1] = y[k] + h * (c1 * m1 + c2 * m2) # <- fórmula do método de Heun
+    return x, y
+
 xs, ys = euler(f, x0, y0, h)
 x = [v for _, v in xs.items()]
 y = [v for _, v in ys.items()]
