@@ -10,7 +10,7 @@ n = 50
 def f(x, y):
     return 2 * y + x + 1
 
-def s(x):
+def solucao_do_pvi(x):
     return (1/4) * (-2 * x + 13 * np.exp(2 * x - 2) - 3)
 
 def euler(f, x0, y0, h):
@@ -71,6 +71,6 @@ t = np.linspace(x0, x0 + n * h, 100)
 
 plt.scatter(x, y, label="Euler")
 plt.scatter(hx, hy, label="Heun")
-plt.plot(t, s(t))
+plt.plot(t, solucao_do_pvi(t))
 plt.legend()
 plt.show()
