@@ -4,7 +4,7 @@ import numpy as np
 # possui única solução pelo EXU
 
 x0, y0 = 1, 2
-h = 0.125 # tamanho do passo
+h = 2 ** (-5) # tamanho do passo
 n = 100
 
 def f(x, y):
@@ -81,7 +81,7 @@ for name, metodo in zip(names, metodos):
     y = list(ys.values())
 
     plt.scatter(x, y, label=name)
-    plt.plot(t, solucao_do_pvi(t))
 
+plt.plot(t, solucao_do_pvi(t))
 plt.legend()
 plt.show()
