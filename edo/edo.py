@@ -44,7 +44,7 @@ def ralston(f, x0, y0, h, n):
     y = {0: y0}
     for k in range(n - 1):
         m1 = f(x[k], y[k])
-        m2 = f(x[k] + h, y[k] + m1 * h)
+        m2 = f(x[k] + (3/4) * h, y[k] + m1 * (3/4) * h)
         y[k + 1] = y[k] + (h / 3) * (1 * m1 + 2 * m2) # <- fórmula do método de Ralston
     return x, y
 
